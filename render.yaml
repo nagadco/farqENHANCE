@@ -50,8 +50,9 @@ services:
     autoDeploy: true
 
   # Frontend Static Site
-  - type: static
+  - type: web
     name: farq-enhance-frontend
+    runtime: static
     region: oregon
     plan: starter
     rootDir: Frontend
