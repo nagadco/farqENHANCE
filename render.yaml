@@ -1,0 +1,93 @@
+services:
+  # Backend API Service
+  - type: web
+    name: farq-enhance-api
+    runtime: node
+    region: oregon
+    plan: starter
+    rootDir: api
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: CORS_ORIGINS
+        sync: false
+      # TheChefz API Configuration
+      - key: CHEFZ_AUTH_TOKEN
+        sync: false
+      - key: CHEFZ_PHPSESSID
+        sync: false
+      - key: CHEFZ_CSRF
+        sync: false
+      # Production TheChefz tokens (optional, uses CHEFZ_* if not set)
+      - key: CHEFZ_AUTH_TOKEN_PROD
+        sync: false
+      - key: CHEFZ_PHPSESSID_PROD
+        sync: false
+      - key: CHEFZ_CSRF_PROD
+        sync: false
+      # Supabase Configuration
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      # ToYou API Configuration
+      - key: TOYOU_AUTH_TOKEN
+        sync: false
+      - key: TOYOU_REFRESH_TOKEN
+        sync: false
+      # Gemini AI Configuration
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
+
+  # Frontend Static Site
+  - type: static
+    name: farq-enhance-frontend
+    region: oregon
+    plan: starter
+    rootDir: Frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      # API Base URL - will be set manually from backend service URL
+      # Format: https://farq-enhance-api.onrender.com
+      - key: VITE_API_BASE_URL
+        sync: false
+      # Supabase Configuration for Frontend
+      - key: VITE_SUPABASE_URL
+        fromService:
+          type: web
+          name: farq-enhance-api
+          envVarKey: SUPABASE_URL
+      - key: VITE_SUPABASE_ANON_KEY
+        fromService:
+          type: web
+          name: farq-enhance-api
+          envVarKey: SUPABASE_ANON_KEY
+      # Node environment
+      - key: NODE_ENV
+        value: production
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    autoDeploy: true
