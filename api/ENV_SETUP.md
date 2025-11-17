@@ -23,7 +23,10 @@ CORS_ORIGINS=http://localhost:5173,https://your-frontend-domain.com
 # Demo Mode (for presentations - shows fake prices)
 DEMO_MODE=false
 
-# Gemini AI Configuration (Required for restaurant matching)
+# Vercel AI Gateway Configuration
+AI_GATEWAY_API_KEY=your_vercel_ai_gateway_key_here
+
+# Gemini AI Configuration (Optional - if not using AI Gateway)
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
