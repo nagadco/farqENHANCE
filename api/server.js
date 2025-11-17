@@ -168,7 +168,11 @@ const getChefzRestaurants = async (latitude, longitude, maxChefs = 6, page = 2, 
 
 // New function to get ALL delivery options for a specific restaurant (TheChefz + ToYou + Jahez + Hunger Station)
 // OPTIMIZED: All API calls run in parallel for faster response
-\n  // Cache check (Supabase)\n  try {\n    const persistence = require('./persistence');\n    const cached = await persistence.getCachedDeliveryOptions(chefzData?.branchId || chefzData?.id || chefzData?.branchID || chefzData?.branch_id || chefzData?.chefId || chefzData?.chef_id || chefzData?.restaurantId || chefzData?.restaurant_id || null);\n    if (cached && cached.length) {\n      console.log('??? Using cached delivery options');\n      return cached;\n    }\n  } catch (e) { console.warn('Cache check failed:', e.message); }\n
+const getAllDeliveryOptions = async (restaurantName, chefzData, location) => {
+  console.log(`🔍 Getting all delivery options for: ${restaurantName}`);
+
+  // Define supported delivery providers
+  const deliveryProviders = [
     { name: "The Chefz", image: "/delivery_logos/the-chefs.png" },
     { name: "To You", image: "/delivery_logos/to-you.png" },
     { name: "Jahez", image: "/delivery_logos/jahez.png" },
