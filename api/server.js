@@ -498,6 +498,15 @@ const processQueue = async () => {
   }
 };
 
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
 app.post('/compare', async (req, res) => {
   const { latitude, longitude, maxChefs = 6, page = 2, position = 0 } = req.body;
 
