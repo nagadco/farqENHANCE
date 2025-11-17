@@ -1,0 +1,47 @@
+{
+    "status": "completed",
+    "restaurant_id": "123456",
+    "restaurant_name": "Some Restaurant",
+    "delivery_options": [
+        {
+            "name": "Jahez",
+            "time": "25-40mins",
+            "price": "15",
+            "originalPrice": "15",
+            "isFree": false,
+            "hasOffer": false,
+            "hasPrime": false,
+            "pricingType": "standard",
+            "image": "/delivery_logos/jahez.png",
+            "status": "success",
+            "deliveryOffer": null,
+            "deepLink": "https://jahez-alternate.app.link/?restaurantId=12345&branchId=67890",
+            "deliveryDetails": {
+                "deliveryFee": 15,
+                "pricing": {
+                    "originalPrice": 15,
+                    "offerPrice": null,
+                    "primePrice": null,
+                    "finalPrice": 15,
+                    "type": "standard",
+                    "hasOffer": false,
+                    "hasPrime": false
+                },
+                "primeEligibility": null,
+                "appliedOffer": null,
+                "discountWithVAT": null,
+                "tier": {
+                    "id": 73012,
+                    "tierEnglishName": "Tier 2",
+                    "tierArabicName": "Tier 2",
+                    "startTier": 1,
+                    "endTier": 2,
+                    "tierPrice": 15
+                },
+                "orderSubTotal": 50,
+                "isPartnerDelivery": false
+            }
+        }
+    ],
+    "processed_at": "2025-10-24T12:13:31.274Z"
+}

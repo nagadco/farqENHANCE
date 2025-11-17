@@ -1,0 +1,68 @@
+{
+    "status": "completed",
+    "restaurant_id": "106005",
+    "restaurant_name": "KFC",
+    "delivery_options": [
+        {
+            "name": "Jahez",
+            "time": "25-40mins",
+            "price": "3",
+            "originalPrice": "17",
+            "isFree": false,
+            "hasOffer": true,
+            "hasPrime": true,
+            "pricingType": "offer",
+            "image": "/delivery_logos/jahez.png",
+            "status": "success",
+            "deliveryOffer": "وفر 14.00 ريال",
+            "deepLink": "https://jahez-alternate.app.link/?restaurantId=16040&branchId=106005",
+            "deliveryDetails": {
+                "deliveryFee": 3,
+                "pricing": {
+                    "originalPrice": 16.997,
+                    "offerPrice": 3,
+                    "primePrice": 0,
+                    "finalPrice": 3,
+                    "type": "offer",
+                    "hasOffer": true,
+                    "hasPrime": true
+                },
+                "primeEligibility": {
+                    "offerId": null,
+                    "subTotal": 149,
+                    "delivery": 0,
+                    "total": 149,
+                    "vatCost": 19.43,
+                    "savedAmountWhenUsingPrime": null
+                },
+                "appliedOffer": {
+                    "id": 999,
+                    "englishName": "3 Riyal",
+                    "arabicName": "3 ريال",
+                    "englishDescription": "ثلاثه ريال - اكتوبر",
+                    "arabicDescription": "ثلاثه ريال - اكتوبر",
+                    "offerType": 0,
+                    "segment": 0,
+                    "amount": 2.61,
+                    "contribution": 7.83,
+                    "sponser": 2
+                },
+                "discountWithVAT": 3.0015,
+                "originalDeliveryPrice": 14.78,
+                "calculatedDeliveryPrice": 2.61,
+                "wafarhaPrice": 3.0015,
+                "tier": {
+                    "id": 73013,
+                    "tierEnglishName": "Tier 3",
+                    "tierArabicName": "Tier 3",
+                    "startTier": 2,
+                    "endTier": 3,
+                    "tierPrice": 14.78
+                },
+                "orderSubTotal": 149,
+                "isPartnerDelivery": false
+            }
+        }
+    ],
+    "processed_at": "2025-10-24T12:13:31.274Z"
+}

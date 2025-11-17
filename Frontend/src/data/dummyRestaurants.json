@@ -1,0 +1,457 @@
+{
+  "restaurants": [
+    {
+      "name": "Burger King",
+      "nameAr": "برجر كينغ",
+      "rating": 4.7,
+      "distance": "100m",
+      "tags": [
+        "Burger",
+        "Fast Food",
+        "Fridays"
+      ],
+      "image": "/restutant_logos/burger-king.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "20-30mins",
+          "price": "5",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "15-25mins",
+          "price": "10",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "25-35mins",
+          "price": "14",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        },
+        {
+          "name": "To You",
+          "time": "25-35mins",
+          "price": "17",
+          "isFree": false,
+          "image": "/delivery_logos/to-you.png"
+        }
+      ]
+    },
+    {
+      "name": "Herfy",
+      "nameAr": "هرفي",
+      "rating": 4.7,
+      "distance": "100m",
+      "tags": [
+        "Burger",
+        "Fast Food",
+        "Fridays"
+      ],
+      "image": "/restutant_logos/herfy.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "20-30mins",
+          "price": "Free",
+          "isFree": true,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "15-25mins",
+          "price": "8",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "25-35mins",
+          "price": "12",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        },
+        {
+          "name": "To You",
+          "time": "25-35mins",
+          "price": "15",
+          "isFree": false,
+          "image": "/delivery_logos/to-you.png"
+        }
+      ]
+    },
+    {
+      "name": "Hataba",
+      "nameAr": "حطبه",
+      "rating": 4.3,
+      "distance": "120m",
+      "tags": [
+        "Arabic"
+      ],
+      "image": "/restutant_logos/hataba.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "20-30mins",
+          "price": "6",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "15-25mins",
+          "price": "12",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "25-35mins",
+          "price": "15",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        },
+        {
+          "name": "To You",
+          "time": "25-35mins",
+          "price": "18",
+          "isFree": false,
+          "image": "/delivery_logos/to-you.png"
+        }
+      ]
+    },
+    {
+      "name": "Kudu",
+      "nameAr": "كودو",
+      "rating": 4.4,
+      "distance": "200m",
+      "tags": [
+        "Burger",
+        "Fast Food"
+      ],
+      "image": "/restutant_logos/kudu.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "15-25mins",
+          "price": "5",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "25-35mins",
+          "price": "10",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "30-40mins",
+          "price": "14",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        }
+      ]
+    },
+    {
+      "name": "Al Baik",
+      "nameAr": "البيك",
+      "rating": 4.8,
+      "distance": "150m",
+      "tags": [
+        "Chicken",
+        "Fast Food"
+      ],
+      "image": "/restutant_logos/al-baik.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "10-20mins",
+          "price": "Free",
+          "isFree": true,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "10-20mins",
+          "price": "7",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "20-30mins",
+          "price": "11",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        }
+      ]
+    },
+    {
+      "name": "McDonald's",
+      "nameAr": "مكدونالدز",
+      "rating": 4.2,
+      "distance": "180m",
+      "tags": [
+        "Burger",
+        "Fast Food",
+        "International"
+      ],
+      "image": "/restutant_logos/mcdonalds.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "15-25mins",
+          "price": "6",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "25-35mins",
+          "price": "12",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        },
+        {
+          "name": "To You",
+          "time": "25-35mins",
+          "price": "15",
+          "isFree": false,
+          "image": "/delivery_logos/to-you.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "30-40mins",
+          "price": "18",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        }
+      ]
+    },
+    {
+      "name": "KFC",
+      "nameAr": "كنتاكي",
+      "rating": 4.1,
+      "distance": "220m",
+      "tags": [
+        "Chicken",
+        "Fast Food",
+        "International"
+      ],
+      "image": "/restutant_logos/kfc.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "15-25mins",
+          "price": "5",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "15-25mins",
+          "price": "9",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "25-35mins",
+          "price": "12",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        }
+      ]
+    },
+    {
+      "name": "Shawarma House",
+      "nameAr": "بيت الشاورما",
+      "rating": 4.6,
+      "distance": "90m",
+      "tags": [
+        "Arabic",
+        "Shawarma"
+      ],
+      "image": "/restutant_logos/shawarma-house.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "10-20mins",
+          "price": "4",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "15-25mins",
+          "price": "8",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "20-30mins",
+          "price": "11",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        }
+      ]
+    },
+    {
+      "name": "Pizza Hut",
+      "nameAr": "بيتزا هت",
+      "rating": 4.0,
+      "distance": "300m",
+      "tags": [
+        "Pizza",
+        "International"
+      ],
+      "image": "/restutant_logos/pizza-hut.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "To You",
+          "time": "35-45mins",
+          "price": "6",
+          "isFree": false,
+          "image": "/delivery_logos/to-you.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "30-40mins",
+          "price": "12",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        },
+        {
+          "name": "Jahez",
+          "time": "25-35mins",
+          "price": "15",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        }
+      ]
+    },
+    {
+      "name": "Subway",
+      "nameAr": "صب واي",
+      "rating": 4.3,
+      "distance": "160m",
+      "tags": [
+        "Sandwiches",
+        "Healthy",
+        "International"
+      ],
+      "image": "/restutant_logos/subway.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "20-30mins",
+          "price": "5",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "20-30mins",
+          "price": "9",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "30-40mins",
+          "price": "12",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        }
+      ]
+    },
+    {
+      "name": "Domino's Pizza",
+      "nameAr": "دومينوز بيتزا",
+      "rating": 4.2,
+      "distance": "250m",
+      "tags": [
+        "Pizza",
+        "International"
+      ],
+      "image": "/restutant_logos/dominos.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "25-35mins",
+          "price": "3",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "30-40mins",
+          "price": "7",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        },
+        {
+          "name": "Hunger Station",
+          "time": "35-45mins",
+          "price": "10",
+          "isFree": false,
+          "image": "/delivery_logos/hunger-station.png"
+        }
+      ]
+    },
+    {
+      "name": "Starbucks",
+      "nameAr": "ستاربكس",
+      "rating": 4.5,
+      "distance": "130m",
+      "tags": [
+        "Coffee",
+        "Beverages",
+        "International"
+      ],
+      "image": "/restutant_logos/starbucks.png",
+      "isClosed": false,
+      "deliveryOptions": [
+        {
+          "name": "Jahez",
+          "time": "15-25mins",
+          "price": "4",
+          "isFree": false,
+          "image": "/delivery_logos/jahez.png"
+        },
+        {
+          "name": "To You",
+          "time": "25-35mins",
+          "price": "8",
+          "isFree": false,
+          "image": "/delivery_logos/to-you.png"
+        },
+        {
+          "name": "The Chefs",
+          "time": "15-25mins",
+          "price": "11",
+          "isFree": false,
+          "image": "/delivery_logos/the-chefs.png"
+        }
+      ]
+    }
+  ]
+}
