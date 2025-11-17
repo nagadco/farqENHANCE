@@ -18,6 +18,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const slackHelper = new SlackHelper();
 
+// Demo mode for presentations (set DEMO_MODE=true in env)
+const DEMO_MODE = process.env.DEMO_MODE === 'true';
+
 // Sleep utility function
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -32,6 +35,61 @@ const withTimeout = (promise, timeoutMs, fallbackValue) => {
       }, timeoutMs)
     )
   ]);
+};
+
+// Generate realistic demo delivery prices
+// Ranking: 1-Jahez (best), 2-Keeta, 3-HungerStation, 4-TheChefz, 5-ToYou (worst)
+const generateDemoDeliveryOptions = (restaurantName) => {
+  // Base price varies by restaurant (5-15 SAR range)
+  const basePrice = 8 + Math.floor(Math.random() * 7);
+
+  return [
+    {
+      name: "Jahez",
+      time: `${15 + Math.floor(Math.random() * 10)}-${20 + Math.floor(Math.random() * 10)}mins`,
+      price: Math.random() > 0.7 ? "0" : `${Math.max(basePrice - 5, 3)}`, // Sometimes free, otherwise cheapest
+      isFree: Math.random() > 0.7,
+      image: "/delivery_logos/jahez.png",
+      status: "success",
+      deliveryOffer: Math.random() > 0.5 ? "Free delivery on orders over 30 SAR" : null
+    },
+    {
+      name: "Keeta",
+      time: `${20 + Math.floor(Math.random() * 10)}-${25 + Math.floor(Math.random() * 10)}mins`,
+      price: `${basePrice - 2}`,
+      isFree: false,
+      image: "/delivery_logos/keeta.png",
+      status: "success",
+      deliveryOffer: Math.random() > 0.6 ? "5 SAR off on first order" : null
+    },
+    {
+      name: "Hunger Station",
+      time: `${25 + Math.floor(Math.random() * 10)}-${30 + Math.floor(Math.random() * 10)}mins`,
+      price: `${basePrice}`,
+      isFree: false,
+      image: "/delivery_logos/hunger-station.png",
+      status: "success",
+      deliveryOffer: Math.random() > 0.7 ? "10% off delivery" : null
+    },
+    {
+      name: "The Chefz",
+      time: `${30 + Math.floor(Math.random() * 10)}-${35 + Math.floor(Math.random() * 10)}mins`,
+      price: `${basePrice + 3}`,
+      isFree: false,
+      image: "/delivery_logos/the-chefs.png",
+      status: "success",
+      deliveryOffer: null
+    },
+    {
+      name: "To You",
+      time: `${35 + Math.floor(Math.random() * 15)}-${45 + Math.floor(Math.random() * 15)}mins`,
+      price: `${basePrice + 5}`,
+      isFree: false,
+      image: "/delivery_logos/to-you.png",
+      status: "success",
+      deliveryOffer: null
+    }
+  ];
 };
 
 // Create responses directory if it doesn't exist
@@ -166,17 +224,24 @@ const getChefzRestaurants = async (latitude, longitude, maxChefs = 6, page = 2, 
   }
 };
 
-// New function to get ALL delivery options for a specific restaurant (TheChefz + ToYou + Jahez + Hunger Station)
+// New function to get ALL delivery options for a specific restaurant (TheChefz + ToYou + Jahez + Hunger Station + Keeta)
 // OPTIMIZED: All API calls run in parallel for faster response
 const getAllDeliveryOptions = async (restaurantName, chefzData, location) => {
   console.log(`🔍 Getting all delivery options for: ${restaurantName}`);
+
+  // DEMO MODE: Return fake realistic prices for presentation
+  if (DEMO_MODE) {
+    console.log('📊 DEMO MODE: Returning fake prices');
+    return generateDemoDeliveryOptions(restaurantName);
+  }
 
   // Define supported delivery providers
   const deliveryProviders = [
     { name: "The Chefz", image: "/delivery_logos/the-chefs.png" },
     { name: "To You", image: "/delivery_logos/to-you.png" },
     { name: "Jahez", image: "/delivery_logos/jahez.png" },
-    { name: "Hunger Station", image: "/delivery_logos/hunger-station.png" }
+    { name: "Hunger Station", image: "/delivery_logos/hunger-station.png" },
+    { name: "Keeta", image: "/delivery_logos/keeta.png" }
   ];
 
   // ⚡ PARALLEL EXECUTION with TIMEOUTS: All API calls run simultaneously

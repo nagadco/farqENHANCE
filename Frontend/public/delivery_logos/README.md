@@ -1,12 +1,11 @@
 # Delivery Service Logos
 
-✅ **All delivery service logos are now available!**
-
 ## Available Files:
 - `the-chefs.png` - The Chefs logo ✅
 - `hunger-station.png` - Hunger Station logo ✅
 - `to-you.png` - To You logo ✅
 - `jahez.png` - Jahez logo ✅
+- `keeta.png` - Keeta logo ⚠️ (placeholder needed - add Keeta official logo)
 
 ## Image Requirements:
 - Format: PNG (recommended) or JPG

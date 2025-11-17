@@ -20,6 +20,9 @@ PORT=3000
 NODE_ENV=production
 CORS_ORIGINS=http://localhost:5173,https://your-frontend-domain.com
 
+# Demo Mode (for presentations - shows fake prices)
+DEMO_MODE=false
+
 # Gemini AI Configuration (Required for restaurant matching)
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
@@ -65,6 +68,24 @@ CHEFZ_AUTH_TOKEN_2=Bearer_second_token
 CHEFZ_PHPSESSID_2=second_phpsessid
 CHEFZ_CSRF_2=second_csrf
 ```
+
+## Demo Mode
+
+**For presentations and demonstrations**, you can enable demo mode to show realistic fake prices:
+
+```env
+DEMO_MODE=true
+```
+
+When enabled:
+- Shows 5 delivery providers: Jahez, Keeta, Hunger Station, The Chefz, To You
+- Prices are realistic and varied (3-18 SAR range)
+- Ranking always shows: 1-Jahez (cheapest/fastest), 2-Keeta, 3-Hunger Station, 4-The Chefz, 5-To You
+- Jahez sometimes shows free delivery (70% chance)
+- Random delivery offers shown for each provider
+- No real API calls are made
+
+**To disable demo mode:** Set `DEMO_MODE=false` or remove the variable.
 
 ## Deployment on Render
 
