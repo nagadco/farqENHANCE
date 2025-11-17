@@ -43,12 +43,15 @@ const generateDemoDeliveryOptions = (restaurantName) => {
   // Base price varies by restaurant (5-15 SAR range)
   const basePrice = 8 + Math.floor(Math.random() * 7);
 
+  const isFreeDelivery = Math.random() > 0.7;
+  const jahezPrice = isFreeDelivery ? "0" : `${Math.max(basePrice - 5, 3)}`;
+
   return [
     {
       name: "Jahez",
       time: `${15 + Math.floor(Math.random() * 10)}-${20 + Math.floor(Math.random() * 10)}mins`,
-      price: Math.random() > 0.7 ? "0" : `${Math.max(basePrice - 5, 3)}`, // Sometimes free, otherwise cheapest
-      isFree: Math.random() > 0.7,
+      price: jahezPrice,
+      isFree: isFreeDelivery,
       image: "/delivery_logos/jahez.png",
       status: "success",
       deliveryOffer: Math.random() > 0.5 ? "Free delivery on orders over 30 SAR" : null
