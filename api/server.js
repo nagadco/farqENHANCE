@@ -674,7 +674,7 @@ app.post('/restaurant/:id/delivery-options', async (req, res) => {
   try {
     console.log(`🔍 Getting ALL delivery options for restaurant: ${restaurantName} (ID: ${id})`);
 
-    const allOptions = await getRestaurantDeliveryOptions(latitude, longitude, restaurantName, chefzData);
+    const allOptions = await getAllDeliveryOptions(restaurantName, chefzData, { latitude, longitude });
 
     const processingTime = Date.now() - startTime;
 
