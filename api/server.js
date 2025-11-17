@@ -9,6 +9,7 @@ const path = require('path');
 const ChefzAPI = require('./chefz-api');
 const ToYouAPI = require('./toyou-api');
 const JahezAPI = require('./jahez-api');
+const jahezMatcher = require('./jahez-matcher');
 const DataPrimary = (process.env.DATA_PRIMARY || 'live').toLowerCase();
 let restaurantData = null;
 try { restaurantData = require('./data/restaurantData'); } catch (_) { restaurantData = null; }
@@ -252,6 +253,15 @@ const getAllDeliveryOptions = async (restaurantName, chefzData, location) => {
   const startTime = Date.now();
   const API_TIMEOUT = 8000; // 8 seconds timeout per API
 
+  // Extract location data
+  const restaurantLat = location?.latitude || 24.7136;
+  const restaurantLng = location?.longitude || 46.6753;
+
+  // Initialize API clients
+  const chefzAPI = new ChefzAPI();
+  const toyouAPI = new ToYouAPI();
+  const jahezAPI = new JahezAPI();
+
   const [chefzOption, toyouOption, jahezOption, hungerStationOption] = await Promise.all([
     // 1. Get TheChefz delivery fee
     withTimeout((async () => {
@@ -394,70 +404,15 @@ const getAllDeliveryOptions = async (restaurantName, chefzData, location) => {
       errorMessage: "Request timeout"
     }),
 
-    // 3. Search in Jahez
+    // 3. Match restaurant in Jahez using local data
     withTimeout((async () => {
-      console.log(`🔍 Searching Jahez for: ${restaurantName}`);
+      console.log(`🔍 Matching Jahez restaurant for: ${restaurantName}`);
       try {
-        const chefzLogoUrl = chefzData?.profilePicture || null;
-        const jahezResult = await jahezAPI.getDeliveryFeeForRestaurant(restaurantName, restaurantLat, restaurantLng, chefzLogoUrl);
+        // Use Jahez matcher to find matching restaurant
+        const jahezResult = jahezMatcher.matchAndGetDelivery(restaurantName, restaurantLat, restaurantLng);
 
-        if (jahezResult && jahezResult.deliveryFee !== null) {
-          console.log(`✅ Jahez: ${jahezResult.restaurantName} - Delivery = ${jahezResult.deliveryFee} SAR`);
-
-          // Create dynamic deep link using Branch.io API
-          const deepLink = await jahezAPI.createDeepLink(
-            jahezResult.restaurantId,
-            jahezResult.branchId,
-            jahezResult.restaurantName
-          );
-
-          // Build delivery offer message and pricing info
-          let deliveryOfferMessage = null;
-          const details = jahezResult.deliveryDetails;
-          const pricing = details?.pricing;
-
-          console.log(`🔍 Jahez Pricing Info for ${restaurantName}:`, {
-            hasPricing: !!pricing,
-            pricing: pricing,
-            hasOffer: pricing?.hasOffer,
-            hasPrime: pricing?.hasPrime,
-            originalPrice: pricing?.originalPrice,
-            offerPrice: pricing?.offerPrice,
-            primePrice: pricing?.primePrice
-          });
-
-          // Build offer message based on pricing type
-          let savedAmount = null;
-          if (pricing?.hasOffer && pricing.offerPrice !== null && pricing.originalPrice) {
-            savedAmount = pricing.originalPrice - pricing.offerPrice;
-            deliveryOfferMessage = savedAmount.toFixed(2);
-          } else if (pricing?.hasPrime && pricing.primePrice === 0) {
-            deliveryOfferMessage = 'prime_free';
-          } else if (details?.appliedOffer) {
-            deliveryOfferMessage = details.appliedOffer.englishName || details.appliedOffer.arabicName;
-            savedAmount = pricing?.originalPrice && pricing?.offerPrice ?
-              (pricing.originalPrice - pricing.offerPrice).toFixed(2) : null;
-          } else if (details?.tier && details.tier.tierEnglishName) {
-            deliveryOfferMessage = `Distance: ${details.tier.tierEnglishName}`;
-          }
-
-          return {
-            name: "Jahez",
-            time: "25-40mins",
-            price: jahezResult.deliveryFee.toString(),
-            originalPrice: pricing?.originalPrice?.toString() || null,
-            isFree: parseFloat(jahezResult.deliveryFee) === 0,
-            hasOffer: pricing?.hasOffer || false,
-            hasPrime: pricing?.hasPrime || false,
-            pricingType: pricing?.type || 'standard',
-            savedAmount: savedAmount,
-            image: "/delivery_logos/jahez.png",
-            status: "success",
-            merchantData: jahezResult,
-            deepLink: deepLink,
-            deliveryOffer: deliveryOfferMessage,
-            deliveryDetails: details
-          };
+        if (jahezResult && jahezResult.available) {
+          return jahezResult;
         } else {
           return {
             name: "Jahez",
@@ -466,7 +421,7 @@ const getAllDeliveryOptions = async (restaurantName, chefzData, location) => {
             isFree: false,
             image: "/delivery_logos/jahez.png",
             status: "not_found",
-            errorMessage: "Restaurant not found"
+            errorMessage: jahezResult?.message || "Restaurant not found"
           };
         }
       } catch (error) {
